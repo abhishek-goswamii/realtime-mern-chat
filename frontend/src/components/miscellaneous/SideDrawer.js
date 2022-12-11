@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@chakra-ui/hooks'
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton } from '@chakra-ui/react'
 import axios from 'axios'
+import ChatLoading from '../ChatLoading';
+import UserListItem from '../userAvatar/UserListItem';
 
 const SideDrawer = () => {
 
@@ -29,7 +31,9 @@ const SideDrawer = () => {
     navigate('login')
   }
 
-
+  const accessChat = (userId) => {
+    
+  }
   const handleSearch = async () => {
 
 
@@ -157,6 +161,22 @@ const SideDrawer = () => {
               <Button onClick={handleSearch}>go</Button>
 
             </Box>
+
+            {loading?(<ChatLoading/>):(
+
+              searchResult?.map(user => 
+                
+                <UserListItem
+                key={user._id}
+                user={user}
+                handleFunction={()=>accessChat(user._id)}
+                />
+
+                )
+
+            )
+            
+            }
 
           </DrawerBody>
 
