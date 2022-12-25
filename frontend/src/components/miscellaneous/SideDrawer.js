@@ -1,4 +1,4 @@
-import { MenuDivider, Avatar, AvatarBadge, AvatarGroup, MenuItem, useToast } from '@chakra-ui/react'
+import { MenuDivider, Avatar, AvatarBadge, AvatarGroup, MenuItem, useToast, Spinner } from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react'
 import { Input, Menu, Text, Box, Tooltip, Button, MenuButton, MenuList } from '@chakra-ui/react'
@@ -21,7 +21,7 @@ const SideDrawer = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const { user } = ChatState()
+  const { user,setSelectedChat,chats,setChats } = ChatState()
   const toast = useToast()
 
   const navigate = useNavigate()
@@ -31,12 +31,42 @@ const SideDrawer = () => {
     navigate('login')
   }
 
-  const accessChat = (userId) => {
-    
+  const accessChat = async(userId) => {
+    try {
+      
+      setLoadingChats(true)
+      
+      const config = {
+        
+        headers:{
+          'Content-Type': 'application/json',
+          Authorization:`Bearer ${user.token}`
+        }
+      }
+
+      const {data} = await axios.post('/api/chat/',{userId},config)
+      
+      if(!chats.find(c => c._id === data._id))setChats([data,...chats])
+
+      
+      setLoadingChats(false)
+      onClose()
+
+    } catch (error) {
+      toast({
+        title: "Error",
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position: "top-left"
+      })
+    }  
+
   }
+
+
   const handleSearch = async () => {
-
-
+    
     if (!search) {
       toast({
         title: "please type name or email",
@@ -59,7 +89,6 @@ const SideDrawer = () => {
       }
 
       const {data} = await axios.get(`/api/user?search=${search}`,config)
-      console.log(searchResult)
       setSearchResult(data)
       setLoading(false)
 
@@ -177,6 +206,8 @@ const SideDrawer = () => {
             )
             
             }
+
+            {loadingChats && <Spinner ml='auto' display='flex' />}
 
           </DrawerBody>
 
