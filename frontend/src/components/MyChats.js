@@ -15,7 +15,7 @@ const MyChats = () => {
 
   const toast = useToast()
 
-  const groupChaticon = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fvector%2Fchat-icon-people-chat-icon-group-chat-icon-gm1277134944-376430976&psig=AOvVaw25aLR7UVUsvwK-jIjM_Q34&ust=1671371585411000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCOC7o8HmgPwCFQAAAAAdAAAAABAL'
+  const groupChaticon = 'https://res.cloudinary.com/dovsnvkrs/image/upload/v1672024913/grp_dbofhw.png'
 
 
   function tempp() {
@@ -123,7 +123,7 @@ const MyChats = () => {
            
            >
 
-            <Avatar size='sm' src={chat.isGroupChat?({tempp}):(getSender(loggedUser,chat.users).pic)} ml='1rem' mr='2rem'/>
+            <Avatar size='sm' src={chat.isGroupChat?(groupChaticon):getSender(loggedUser,chat.users).pic} ml='1rem' mr='2rem'/>
             
             <Text> 
             
