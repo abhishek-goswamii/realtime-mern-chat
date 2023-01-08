@@ -10,8 +10,12 @@ import useContext from 'react'
 
 
 const Chatpage = () => {
+
+
   
     const {user} = ChatState()
+    
+    const [fetchAgain, setFetchAgain] = useState();
     
   return (
       
@@ -28,8 +32,8 @@ const Chatpage = () => {
 
            >
               
-              {user&&<MyChats/>}
-              {user&&<ChatBox/>}
+              {user&&<MyChats fetchAgain={fetchAgain} />}
+              {user&&<ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain}/>}
 
            </Box>
 
