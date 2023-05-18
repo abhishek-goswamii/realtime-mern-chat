@@ -5,6 +5,7 @@ import Chatpage from './pages/chatPage';
 import './App.css'
 
 function App() {
+
   return (
     
       <div className="App">
@@ -18,7 +19,8 @@ function App() {
 
      </div>
 
-  );
+  )
+  
 
 }
 

@@ -3,20 +3,15 @@ import { FormControl,useToast, FormLabel, VStack, Input, InputGroup, InputRightE
 import { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+
 const Login = () => {
-   
+    
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [show, setShow] = useState(false);
     const [Loading, setLoading] = useState(false);
     const Navigate = useNavigate()
     const toast = useToast()
-
-    // const postDetails = (pics) => {
-
-        
-
-    // }
 
     const submitHandler = async() => {
 
@@ -54,9 +49,6 @@ const Login = () => {
                 isClosable: true,
                 position: "bottom"
             })
-
-
-
             localStorage.setItem("userInfo", JSON.stringify(data))
 
             setLoading(false)
@@ -81,8 +73,6 @@ const Login = () => {
 
     return (
         <VStack spacing='5px'>
-
-        
 
             <FormControl id='email' >
                 <FormLabel>Email</FormLabel>

@@ -7,7 +7,7 @@ const accessChat = asyncHandler(async (req, res) => {
     const { userId } = req.body;
 
     if (!userId) {
-        console.log("UserId param not sent with request");
+
         return res.sendStatus(400);
     }
 
@@ -62,7 +62,7 @@ const fetchChats = asyncHandler(async (req,res) => {
             path:"latestMessage.sender",
             select:"name pic email"
           })
-          console.log(results);
+
         res.status(200).send(results)
         })
 
@@ -109,7 +109,6 @@ const createGroupChat = asyncHandler(async (req,res) => {
 
     } catch (err) {
 
-        console.log(err)
         res.send(err)
 
     }

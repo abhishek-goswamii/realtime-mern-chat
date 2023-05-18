@@ -21,7 +21,7 @@ const Homepage = () => {
     <Container maxW="xl" centerContent >
 
         <Box display="flex" p={3} bg={'white'} w='100%' justifyContent="center" m="40px 0 15px 0" borderRadius="lg" borderWidth="1px" >
-          <Text fontSize={'4xl'} fontFamily="Work Sans">Tall-A-Tive</Text>
+          <Text fontSize={'4xl'} fontFamily="Work Sans">Full Stack Chat Web App</Text>
         </Box>
 
         <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">

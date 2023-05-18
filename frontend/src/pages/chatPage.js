@@ -10,8 +10,6 @@ import useContext from 'react'
 
 
 const Chatpage = () => {
-
-
   
     const {user} = ChatState()
     
@@ -29,9 +27,8 @@ const Chatpage = () => {
             justifyContent='space-between'
             w='100%'
             h='91.5vh'
-
            >
-              
+            
               {user&&<MyChats fetchAgain={fetchAgain} />}
               {user&&<ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain}/>}
 
